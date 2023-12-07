@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+    <style>
+      .sub-button {
+        border: none;
+        background-color: black;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: bold;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+      .is-sub {
+        background-color: lightgrey;
+        color: black;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .cost-input {
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      .calc-button {
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        padding: 12px 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Youtube Subscribe</p>
+    <button class="js-subButton sub-button" onclick="subState()">
+      Subscribe
+    </button>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 =+$10 shipping.</p>
+    <p>Orders over $40 = Free Shipping</p>
+
+    <input
+      type="text"
+      placeholder="Cost of order"
+      class="js-in cost-input"
+      onkeydown="handleKeydown(event)"
+    />
+    <button onclick=" assetOrder()" class="calc-button">Calculate</button>
+
+    <p class="js-shipcost"></p>
+    <script>
+      function handleKeydown(event) {
+        if (event.key === "Enter") {
+          assetOrder();
+        }
+      }
+
+      function subState() {
+        let subtext = document.querySelector(".js-subButton");
+        if (subtext.innerText === "Subscribe") {
+          subtext.innerHTML = "Subscribed";
+          subtext.classList.add("is-sub");
+        } else {
+          subtext.innerHTML = "Subscribe";
+          subtext.classList.remove("is-sub");
+        }
+      }
+
+      function assetOrder() {
+        const testIn = document.querySelector(".js-in").value;
+        if (Number(testIn) >= 40) {
+          document.querySelector(".js-shipcost").innerHTML = `$${testIn}`;
+        } else
+          document.querySelector(".js-shipcost").innerHTML = `$${
+            Number(testIn) + 10
+          }`;
+        document.querySelector(".js-in").value = "";
+      }
+    </script>
+  </body>
+</html>

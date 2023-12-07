@@ -30,9 +30,38 @@
       scissors
     </button>
 
-    <p></p>
+    <p class="js-outcome"></p>
+
+    <p class="js-positions"></p>
+
+    <p class="js-score"></p>
+
+    <button
+      onclick="
+    resetScore()
+     "
+    >
+      reset score
+    </button>
 
     <script>
+      const score = JSON.parse(localStorage.getItem("score")) || {
+        wins: 0,
+        losses: 0,
+        ties: 0,
+      };
+
+      function updateScore(result) {
+        if (result === "win") {
+          score.wins += 1;
+        } else if (result === "loss") {
+          score.losses += 1;
+        } else if (result === "tie") {
+          score.ties += 1;
+        }
+        console.log(score);
+      }
+
       function pickComputermove() {
         randfloat = Math.random();
 
@@ -69,9 +98,28 @@
         } else if (compchoice === "scissors") {
           result = moveIndex[2];
         }
-        alert(
-          `Your outcome is a ${result} because the computer selected ${compchoice}.`
-        );
+        updateScore(result);
+
+        localStorage.setItem("score", JSON.stringify(score));
+
+        document.querySelector(".js-outcome").innerHTML = `You ${result}`;
+        document.querySelector(
+          ".js-positions"
+        ).innerHTML = `You ${playerMove} - ${compchoice} Computer`;
+        document.querySelector(
+          ".js-score"
+        ).innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+      }
+
+      function resetScore() {
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem("score");
+
+        document.querySelector(
+          ".js-score"
+        ).innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
       }
     </script>
   </body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>9g DOM Projects</title>
+    <style></style>
+  </head>
+
+  <body>
+    <p>Youtube Subscribe</p>
+    <button class="js-subButton" onclick="subState()">Subscribe</button>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 =+$10 shipping.</p>
+    <p>Orders over $40 = Free Shipping</p>
+
+    <input
+      type="text"
+      placeholder="Cost of order"
+      class="js-in"
+      onkeydown="handleKeydown(event)"
+    />
+    <button onclick=" assetOrder()">Calculate</button>
+
+    <p class="js-shipcost"></p>
+    <script>
+      function handleKeydown(event) {
+        if (event.key === "Enter") {
+          assetOrder();
+        }
+      }
+
+      function subState() {
+        let subtext = document.querySelector(".js-subButton");
+        if (subtext.innerText === "Subscribe") {
+          subtext.innerHTML = "Subscribed";
+        } else {
+          subtext.innerHTML = "Subscribe";
+        }
+      }
+
+      function assetOrder() {
+        const testIn = document.querySelector(".js-in").value;
+
+        if (Number(testIn) >= 40) {
+          document.querySelector(".js-shipcost").innerHTML = `$${testIn}`;
+        } else
+          document.querySelector(".js-shipcost").innerHTML = `$${
+            (Number(testIn)*100 + 1000)/100
+          }`;
+        document.querySelector(".js-in").value = "";
+      }
+    </script>
+  </body>
+</html>

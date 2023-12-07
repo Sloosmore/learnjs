@@ -30,9 +30,43 @@
       scissors
     </button>
 
-    <p></p>
+    <button
+      onclick="
+      score.wins = 0;    
+      score.losses = 0;
+      score.ties = 0;
+      localStorage.removeItem('score');
+     "
+    >
+      reset score
+    </button>
 
     <script>
+      const score = JSON.parse(localStorage.getItem("score")) || {
+        wins: 0,
+        losses: 0,
+        ties: 0,
+      };
+      /*
+      if (!score) {
+        score = {
+          wins: 0,
+          losses: 0,
+          ties: 0,
+        };
+      }*/
+
+      function updateScore(result) {
+        if (result === "win") {
+          score.wins += 1;
+        } else if (result === "loss") {
+          score.losses += 1;
+        } else if (result === "tie") {
+          score.ties += 1;
+        }
+        console.log(score);
+      }
+
       function pickComputermove() {
         randfloat = Math.random();
 
@@ -69,8 +103,13 @@
         } else if (compchoice === "scissors") {
           result = moveIndex[2];
         }
+        updateScore(result);
+
+        localStorage.setItem("score", JSON.stringify(score));
+
         alert(
-          `Your outcome is a ${result} because the computer selected ${compchoice}.`
+          `Your outcome is a ${result} because the computer selected ${compchoice}.
+          Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`
         );
       }
     </script>
