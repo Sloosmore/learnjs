@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Varibles</title>
+    <link rel="stylesheet" href="styles/10-rps.css" />
+  </head>
+
+  <p class="title">Rock Paper Scissors</p>
+
+  <body>
+    <button
+      onclick="
+      playGame('rock')
+    "
+      class="emo-button"
+    >
+      <img src="images/Rock Emoji.png" alt="" class="image" />
+    </button>
+    <button
+      onclick="
+      playGame('paper')
+    "
+      class="emo-button"
+    >
+      <img src="images/Rock Paper Emoji.png" alt="" class="image" />
+    </button>
+    <button
+      onclick="
+      playGame('scissors')
+    "
+      class="emo-button"
+    >
+      <img src="images/Scissors emoji.png" alt="" class="image" />
+    </button>
+
+    <p class="js-outcome"></p>
+
+    <p class="js-positions positions"></p>
+
+    <p class="js-score score"></p>
+
+    <button
+      onclick="
+    resetScore()
+     "
+      class="reset-score-btn"
+    >
+      reset score
+    </button>
+    <button
+      onclick="
+  autoplay()
+   "
+      class="reset-score-btn"
+    >
+      autoplay
+    </button>
+
+    <script src="scripts/13-rps.js"></script>
+  </body>
+</html>

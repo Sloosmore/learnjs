@@ -17,3 +17,26 @@ function allowEnter(event) {
     action.value = "";
   }
 }
+
+const td2 = [];
+
+function complexTodo() {
+  let listHTML = "";
+  const action = document.querySelector(".js-in2");
+  td2.push(action.value);
+  console.log(td2);
+  i = td2.length;
+  for (i = 0; i < td2.length; i++) {
+    listHTML += `<p>${td2[i]}</p>`;
+  }
+  document.querySelector(".list").innerHTML = listHTML;
+}
+
+function allowEnter2(event) {
+  const action = document.querySelector(".js-in2");
+  if (event.key === "Enter") {
+    complexTodo();
+
+    action.value = "";
+  }
+}

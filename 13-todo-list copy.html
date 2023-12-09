@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arrays and loops</title>
+    <link rel="stylesheet" href="styles/12-todo-list.css" />
+  </head>
+
+  <body>
+    <p>Todo List</p>
+    <div class="ingrid">
+      <input
+        type="text"
+        placeholder="Todo name"
+        onkeydown="enterKey(event)"
+        class="js-item textin"
+      />
+      <input type="date" class="js-date date" />
+      <button onclick="addTask()" class="addbtn">Add</button>
+    </div>
+
+    <div class="table"></div>
+    <div></div>
+
+    <script src="scripts/13-todo-list-storage.js"></script>
+  </body>
+</html>
