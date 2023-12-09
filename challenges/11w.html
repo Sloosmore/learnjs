@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>11qrst</title>
+    <style></style>
+  </head>
+
+  <body>
+    <p>lol</p>
+    <script>
+      const array1 = ["green", "red", "blue", "red"];
+
+      function findIndex(ary, word) {
+        for (i = 0; i < ary.length; i++) {
+          if (ary[i] === word) {
+            return i;
+          }
+        }
+        return -1;
+      }
+
+      console.log(findIndex(array1, "red"));
+
+      function unique(ary) {
+        //init index list and new list
+        const indexlist = [];
+        const ulist = [];
+        //create list of indexes containing unqiue words
+        for (let i = 0; i < ary.length; i++) {
+          let index = findIndex(ary, ary[i]);
+          let index_tripwire = 0;
+          //is this word already appended?
+          for (let j = 0; j <= indexlist.length; j++) {
+            if (index === indexlist[j]) {
+              index_tripwire++;
+            }
+          }
+          //if it is not append to index list
+          if (!index_tripwire) {
+            indexlist.push(index);
+          }
+        }
+
+        for (let k = 0; k < indexlist.length; k++) {
+          ulist.push(ary[indexlist[k]]);
+        }
+        return ulist;
+      }
+      console.log("hello");
+      console.log(unique(array1));
+    </script>
+  </body>
+</html>

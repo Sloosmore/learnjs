@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>13abcef</title>
+    <style></style>
+  </head>
+
+  <body>
+    <button class="js-btn" onclick="btnDelay()">Start</button>
+    <button onclick="addtocart()">Add to cart</button>
+    <p class="js-cartInfo"></p>
+
+    <script>
+      var add = function () {
+        console.log(2 + 3);
+      };
+
+      function runTwice(func) {
+        func();
+        func();
+      }
+      runTwice(add);
+
+      const content = document.querySelector(".js-btn");
+
+      function btnDelay() {
+        content.innerHTML = "Loading...";
+        setTimeout(btnContent, 1000);
+      }
+
+      function btnContent() {
+        content.innerHTML = "Finished!";
+      }
+
+      const cart = document.querySelector(".js-cartInfo");
+
+      let ID = "";
+
+      function addtocart() {
+        clearTimeout(ID);
+        cart.innerHTML = "Added";
+        ID = setTimeout(clear, 2000);
+      }
+      function clear() {
+        cart.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title class="js-message">App</title>
+    <style></style>
+  </head>
+
+  <body>
+    <button onclick="Add()">Add</button>
+    <button onclick="Remove()">Remove</button>
+
+    <script>
+      let messages = 0;
+      let ID = "";
+
+      if ((messages = 0 && !ID)) {
+      }
+
+      function changeTitle() {
+        const title = document.querySelector(".js-message");
+        if (title.innerHTML === "App") {
+          title.innerHTML = `(${messages}) New messages`;
+        } else {
+          title.innerHTML = "App";
+        }
+      }
+      function Add() {
+        messages++;
+        console.log(messages);
+        if (messages > 0) {
+          ID = setInterval(changeTitle, 1000);
+        }
+      }
+
+      function Remove() {
+        if (messages > 0) {
+          messages--;
+        }
+        if (messages === 0) {
+          clearInterval(ID);
+        }
+      }
+    </script>
+  </body>
+</html>
